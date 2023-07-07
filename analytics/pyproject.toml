@@ -1,0 +1,27 @@
+[tool.poetry]
+name = "analytics"
+version = "0.1.0"
+description = ""
+authors = ["AstroPhysica <coen1512@hotmail.nl>"]
+readme = "README.md"
+packages = [{include = "analytics", from = "src"}]
+
+[tool.poetry.dependencies]
+python = "3.9.17,<3.12"
+numpy = "^1.25.0"
+pandas = "^2.0.3"
+pyside6 = "^6.5.1.1"
+pyqtgraph = "^0.13.3"
+
+
+[tool.poetry.group.dev.dependencies]
+poethepoet = "^0.20.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poe.tasks.compile]
+shell = """
+pyside6-uic src/analytics/interface.ui -o src/analytics/user_interface.py
+"""
