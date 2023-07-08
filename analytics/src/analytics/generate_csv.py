@@ -3,7 +3,7 @@ import random
 from datetime import date, timedelta
 
 column_headers = ['Bedrag', 'Leen_Donatie', 'Datum']
-num_rows = 5
+num_rows = 150
 
 # Generate random data for each row
 data = []
