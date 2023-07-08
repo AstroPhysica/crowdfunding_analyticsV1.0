@@ -17,8 +17,8 @@
    <widget class="QPushButton" name="Selectfile">
     <property name="geometry">
      <rect>
-      <x>980</x>
-      <y>20</y>
+      <x>820</x>
+      <y>30</y>
       <width>93</width>
       <height>28</height>
      </rect>
@@ -30,7 +30,7 @@
    <widget class="QPushButton" name="Runanalysis">
     <property name="geometry">
      <rect>
-      <x>980</x>
+      <x>820</x>
       <y>70</y>
       <width>93</width>
       <height>28</height>
@@ -43,12 +43,189 @@
    <widget class="PlotWidget" name="graphicsView">
     <property name="geometry">
      <rect>
-      <x>200</x>
+      <x>30</x>
       <y>30</y>
-      <width>761</width>
-      <height>681</height>
+      <width>771</width>
+      <height>601</height>
      </rect>
     </property>
+   </widget>
+   <widget class="QWidget" name="verticalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>810</x>
+      <y>110</y>
+      <width>291</width>
+      <height>184</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Geef de waarden op die berekent moeten worden</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="Gemiddelde">
+       <property name="text">
+        <string>Gemiddelde</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="GemiddeldeLeen">
+       <property name="text">
+        <string>Gemiddelde: leen</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="GemiddeldeDonatie">
+       <property name="text">
+        <string>Gemiddelde: donatie</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="checkBox_2">
+       <property name="text">
+        <string>Totaal</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="Verwachtingsdatum">
+       <property name="text">
+        <string>Verwachtingsdatum bereiken doel</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QLabel" name="label_Doel">
+         <property name="text">
+          <string>Doel:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="Doel"/>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="formLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>640</y>
+      <width>191</width>
+      <height>151</height>
+     </rect>
+    </property>
+    <layout class="QFormLayout" name="formLayout">
+     <item row="2" column="0">
+      <widget class="QLabel" name="label_Gemiddelde_Donatie">
+       <property name="text">
+        <string>Gemiddelde: Donatie</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QLineEdit" name="Gemiddelde_Donatie_Value"/>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLineEdit" name="Gemiddelde_Value"/>
+     </item>
+     <item row="1" column="1">
+      <widget class="QLineEdit" name="Gemiddelde_Leen_value"/>
+     </item>
+     <item row="3" column="1">
+      <widget class="QLineEdit" name="Totaal_Value"/>
+     </item>
+     <item row="4" column="1">
+      <widget class="QLineEdit" name="Verwachting_Value"/>
+     </item>
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_Gemiddelde">
+       <property name="text">
+        <string>Gemiddelde:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_Gemiddelde_Leen">
+       <property name="text">
+        <string>Gemiddelde: Leen</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="label_Totaal">
+       <property name="text">
+        <string>Totaal:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="0">
+      <widget class="QLabel" name="label_Verwachting">
+       <property name="text">
+        <string>Verwachting:</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="verticalLayoutWidget_2">
+    <property name="geometry">
+     <rect>
+      <x>810</x>
+      <y>290</y>
+      <width>291</width>
+      <height>141</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_2">
+     <item>
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>Staafdiagram</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="Alles">
+       <property name="text">
+        <string>Alles</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="Leen">
+       <property name="text">
+        <string>Leen</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="Donatie">
+       <property name="text">
+        <string>Donatie</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="Verwachting_Grafiek">
+       <property name="text">
+        <string>Verwachting</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
