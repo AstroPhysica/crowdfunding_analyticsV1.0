@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -34,9 +34,9 @@
       <property name="geometry">
        <rect>
         <x>120</x>
-        <y>340</y>
+        <y>390</y>
         <width>191</width>
-        <height>163</height>
+        <height>198</height>
        </rect>
       </property>
       <layout class="QFormLayout" name="formLayout">
@@ -47,10 +47,13 @@
          </property>
         </widget>
        </item>
+       <item row="0" column="1">
+        <widget class="QLineEdit" name="Gemiddelde_Value"/>
+       </item>
        <item row="1" column="0">
         <widget class="QLabel" name="label_Gemiddelde_Leen">
          <property name="text">
-          <string>Gemiddelde: Leen</string>
+          <string>Gemiddelde Leen:</string>
          </property>
         </widget>
        </item>
@@ -60,7 +63,7 @@
        <item row="2" column="0">
         <widget class="QLabel" name="label_Gemiddelde_Donatie">
          <property name="text">
-          <string>Gemiddelde: Donatie</string>
+          <string>Gemiddelde Donatie:</string>
          </property>
         </widget>
        </item>
@@ -77,18 +80,35 @@
        <item row="3" column="1">
         <widget class="QLineEdit" name="Totaal_Value"/>
        </item>
-       <item row="4" column="0">
+       <item row="6" column="0">
         <widget class="QLabel" name="label_Verwachting">
          <property name="text">
           <string>Verwachting:</string>
          </property>
         </widget>
        </item>
-       <item row="4" column="1">
+       <item row="6" column="1">
         <widget class="QLineEdit" name="Verwachting_Value"/>
        </item>
-       <item row="0" column="1">
-        <widget class="QLineEdit" name="Gemiddelde_Value"/>
+       <item row="4" column="1">
+        <widget class="QLineEdit" name="Totaal_Leen_Value"/>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="Totaal_Leen">
+         <property name="text">
+          <string>Totaal Leen:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0">
+        <widget class="QLabel" name="Totaal_Donatie">
+         <property name="text">
+          <string>Totaal Donatie:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="1">
+        <widget class="QLineEdit" name="Totaal_Donatie_Value"/>
        </item>
       </layout>
      </widget>
@@ -98,7 +118,7 @@
         <x>120</x>
         <y>20</y>
         <width>311</width>
-        <height>311</height>
+        <height>369</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout">
@@ -126,14 +146,14 @@
        <item>
         <widget class="QCheckBox" name="GemiddeldeLeen">
          <property name="text">
-          <string>Gemiddelde: leen</string>
+          <string>Gemiddelde: Leen</string>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QCheckBox" name="GemiddeldeDonatie">
          <property name="text">
-          <string>Gemiddelde: donatie</string>
+          <string>Gemiddelde: Donatie</string>
          </property>
         </widget>
        </item>
@@ -145,9 +165,23 @@
         </widget>
        </item>
        <item>
+        <widget class="QCheckBox" name="Total_Leen">
+         <property name="text">
+          <string>Totaal Leen</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="Total_Donatie">
+         <property name="text">
+          <string>Totaal Donatie</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="QCheckBox" name="Verwachtingsdatum">
          <property name="text">
-          <string>Verwachtingsdatum bereiken doel</string>
+          <string>Verwachtingsdatum Bereiken Doel</string>
          </property>
         </widget>
        </item>
@@ -163,21 +197,28 @@
             </widget>
            </item>
            <item>
-            <widget class="QCheckBox" name="Leen">
+            <widget class="QCheckBox" name="Alles_Graph">
+             <property name="text">
+              <string>Alles</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="Leen_Graph">
              <property name="text">
               <string>Leen</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QCheckBox" name="Donatie">
+            <widget class="QCheckBox" name="Donatie_Graph">
              <property name="text">
               <string>Donatie</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QCheckBox" name="Verwachting_Grafiek">
+            <widget class="QCheckBox" name="Verwachting_Graph">
              <property name="text">
               <string>Verwachting</string>
              </property>
@@ -243,7 +284,7 @@
      <attribute name="title">
       <string>Diagram</string>
      </attribute>
-     <widget class="PlotWidget" name="graphicsView">
+     <widget class="PlotWidget" name="Totals">
       <property name="geometry">
        <rect>
         <x>0</x>
@@ -253,7 +294,7 @@
        </rect>
       </property>
      </widget>
-     <widget class="PlotWidget" name="graphicsView_2">
+     <widget class="PlotWidget" name="age_groups">
       <property name="geometry">
        <rect>
         <x>560</x>

@@ -36,7 +36,7 @@ class Ui_MainWindow(object):
         self.tab.setObjectName(u"tab")
         self.formLayoutWidget = QWidget(self.tab)
         self.formLayoutWidget.setObjectName(u"formLayoutWidget")
-        self.formLayoutWidget.setGeometry(QRect(120, 340, 191, 163))
+        self.formLayoutWidget.setGeometry(QRect(120, 390, 191, 198))
         self.formLayout = QFormLayout(self.formLayoutWidget)
         self.formLayout.setObjectName(u"formLayout")
         self.formLayout.setContentsMargins(0, 0, 0, 0)
@@ -44,6 +44,11 @@ class Ui_MainWindow(object):
         self.label_Gemiddelde.setObjectName(u"label_Gemiddelde")
 
         self.formLayout.setWidget(0, QFormLayout.LabelRole, self.label_Gemiddelde)
+
+        self.Gemiddelde_Value = QLineEdit(self.formLayoutWidget)
+        self.Gemiddelde_Value.setObjectName(u"Gemiddelde_Value")
+
+        self.formLayout.setWidget(0, QFormLayout.FieldRole, self.Gemiddelde_Value)
 
         self.label_Gemiddelde_Leen = QLabel(self.formLayoutWidget)
         self.label_Gemiddelde_Leen.setObjectName(u"label_Gemiddelde_Leen")
@@ -78,21 +83,36 @@ class Ui_MainWindow(object):
         self.label_Verwachting = QLabel(self.formLayoutWidget)
         self.label_Verwachting.setObjectName(u"label_Verwachting")
 
-        self.formLayout.setWidget(4, QFormLayout.LabelRole, self.label_Verwachting)
+        self.formLayout.setWidget(6, QFormLayout.LabelRole, self.label_Verwachting)
 
         self.Verwachting_Value = QLineEdit(self.formLayoutWidget)
         self.Verwachting_Value.setObjectName(u"Verwachting_Value")
 
-        self.formLayout.setWidget(4, QFormLayout.FieldRole, self.Verwachting_Value)
+        self.formLayout.setWidget(6, QFormLayout.FieldRole, self.Verwachting_Value)
 
-        self.Gemiddelde_Value = QLineEdit(self.formLayoutWidget)
-        self.Gemiddelde_Value.setObjectName(u"Gemiddelde_Value")
+        self.Totaal_Leen_Value = QLineEdit(self.formLayoutWidget)
+        self.Totaal_Leen_Value.setObjectName(u"Totaal_Leen_Value")
 
-        self.formLayout.setWidget(0, QFormLayout.FieldRole, self.Gemiddelde_Value)
+        self.formLayout.setWidget(4, QFormLayout.FieldRole, self.Totaal_Leen_Value)
+
+        self.Totaal_Leen = QLabel(self.formLayoutWidget)
+        self.Totaal_Leen.setObjectName(u"Totaal_Leen")
+
+        self.formLayout.setWidget(4, QFormLayout.LabelRole, self.Totaal_Leen)
+
+        self.Totaal_Donatie = QLabel(self.formLayoutWidget)
+        self.Totaal_Donatie.setObjectName(u"Totaal_Donatie")
+
+        self.formLayout.setWidget(5, QFormLayout.LabelRole, self.Totaal_Donatie)
+
+        self.Totaal_Donatie_Value = QLineEdit(self.formLayoutWidget)
+        self.Totaal_Donatie_Value.setObjectName(u"Totaal_Donatie_Value")
+
+        self.formLayout.setWidget(5, QFormLayout.FieldRole, self.Totaal_Donatie_Value)
 
         self.verticalLayoutWidget = QWidget(self.tab)
         self.verticalLayoutWidget.setObjectName(u"verticalLayoutWidget")
-        self.verticalLayoutWidget.setGeometry(QRect(120, 20, 311, 311))
+        self.verticalLayoutWidget.setGeometry(QRect(120, 20, 311, 369))
         self.verticalLayout = QVBoxLayout(self.verticalLayoutWidget)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
@@ -126,6 +146,16 @@ class Ui_MainWindow(object):
 
         self.verticalLayout.addWidget(self.Total)
 
+        self.Total_Leen = QCheckBox(self.verticalLayoutWidget)
+        self.Total_Leen.setObjectName(u"Total_Leen")
+
+        self.verticalLayout.addWidget(self.Total_Leen)
+
+        self.Total_Donatie = QCheckBox(self.verticalLayoutWidget)
+        self.Total_Donatie.setObjectName(u"Total_Donatie")
+
+        self.verticalLayout.addWidget(self.Total_Donatie)
+
         self.Verwachtingsdatum = QCheckBox(self.verticalLayoutWidget)
         self.Verwachtingsdatum.setObjectName(u"Verwachtingsdatum")
 
@@ -140,20 +170,25 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_2.addWidget(self.label_2)
 
-        self.Leen = QCheckBox(self.verticalLayoutWidget)
-        self.Leen.setObjectName(u"Leen")
+        self.Alles_Graph = QCheckBox(self.verticalLayoutWidget)
+        self.Alles_Graph.setObjectName(u"Alles_Graph")
 
-        self.verticalLayout_2.addWidget(self.Leen)
+        self.verticalLayout_2.addWidget(self.Alles_Graph)
 
-        self.Donatie = QCheckBox(self.verticalLayoutWidget)
-        self.Donatie.setObjectName(u"Donatie")
+        self.Leen_Graph = QCheckBox(self.verticalLayoutWidget)
+        self.Leen_Graph.setObjectName(u"Leen_Graph")
 
-        self.verticalLayout_2.addWidget(self.Donatie)
+        self.verticalLayout_2.addWidget(self.Leen_Graph)
 
-        self.Verwachting_Grafiek = QCheckBox(self.verticalLayoutWidget)
-        self.Verwachting_Grafiek.setObjectName(u"Verwachting_Grafiek")
+        self.Donatie_Graph = QCheckBox(self.verticalLayoutWidget)
+        self.Donatie_Graph.setObjectName(u"Donatie_Graph")
 
-        self.verticalLayout_2.addWidget(self.Verwachting_Grafiek)
+        self.verticalLayout_2.addWidget(self.Donatie_Graph)
+
+        self.Verwachting_Graph = QCheckBox(self.verticalLayoutWidget)
+        self.Verwachting_Graph.setObjectName(u"Verwachting_Graph")
+
+        self.verticalLayout_2.addWidget(self.Verwachting_Graph)
 
 
         self.horizontalLayout.addLayout(self.verticalLayout_2)
@@ -183,12 +218,12 @@ class Ui_MainWindow(object):
         self.tabWidget.addTab(self.tab, "")
         self.tab_2 = QWidget()
         self.tab_2.setObjectName(u"tab_2")
-        self.graphicsView = PlotWidget(self.tab_2)
-        self.graphicsView.setObjectName(u"graphicsView")
-        self.graphicsView.setGeometry(QRect(0, 10, 551, 521))
-        self.graphicsView_2 = PlotWidget(self.tab_2)
-        self.graphicsView_2.setObjectName(u"graphicsView_2")
-        self.graphicsView_2.setGeometry(QRect(560, 10, 541, 521))
+        self.Totals = PlotWidget(self.tab_2)
+        self.Totals.setObjectName(u"Totals")
+        self.Totals.setGeometry(QRect(0, 10, 551, 521))
+        self.age_groups = PlotWidget(self.tab_2)
+        self.age_groups.setObjectName(u"age_groups")
+        self.age_groups.setGeometry(QRect(560, 10, 541, 521))
         self.tabWidget.addTab(self.tab_2, "")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
@@ -201,7 +236,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(1)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -210,21 +245,26 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
         self.label_Gemiddelde.setText(QCoreApplication.translate("MainWindow", u"Gemiddelde:", None))
-        self.label_Gemiddelde_Leen.setText(QCoreApplication.translate("MainWindow", u"Gemiddelde: Leen", None))
-        self.label_Gemiddelde_Donatie.setText(QCoreApplication.translate("MainWindow", u"Gemiddelde: Donatie", None))
+        self.label_Gemiddelde_Leen.setText(QCoreApplication.translate("MainWindow", u"Gemiddelde Leen:", None))
+        self.label_Gemiddelde_Donatie.setText(QCoreApplication.translate("MainWindow", u"Gemiddelde Donatie:", None))
         self.label_Totaal.setText(QCoreApplication.translate("MainWindow", u"Totaal:", None))
         self.label_Verwachting.setText(QCoreApplication.translate("MainWindow", u"Verwachting:", None))
+        self.Totaal_Leen.setText(QCoreApplication.translate("MainWindow", u"Totaal Leen:", None))
+        self.Totaal_Donatie.setText(QCoreApplication.translate("MainWindow", u"Totaal Donatie:", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"Geef de waarden op die berekent moeten worden", None))
         self.Alles.setText(QCoreApplication.translate("MainWindow", u"Alles", None))
         self.Gemiddelde.setText(QCoreApplication.translate("MainWindow", u"Gemiddelde", None))
-        self.GemiddeldeLeen.setText(QCoreApplication.translate("MainWindow", u"Gemiddelde: leen", None))
-        self.GemiddeldeDonatie.setText(QCoreApplication.translate("MainWindow", u"Gemiddelde: donatie", None))
+        self.GemiddeldeLeen.setText(QCoreApplication.translate("MainWindow", u"Gemiddelde: Leen", None))
+        self.GemiddeldeDonatie.setText(QCoreApplication.translate("MainWindow", u"Gemiddelde: Donatie", None))
         self.Total.setText(QCoreApplication.translate("MainWindow", u"Totaal", None))
-        self.Verwachtingsdatum.setText(QCoreApplication.translate("MainWindow", u"Verwachtingsdatum bereiken doel", None))
+        self.Total_Leen.setText(QCoreApplication.translate("MainWindow", u"Totaal Leen", None))
+        self.Total_Donatie.setText(QCoreApplication.translate("MainWindow", u"Totaal Donatie", None))
+        self.Verwachtingsdatum.setText(QCoreApplication.translate("MainWindow", u"Verwachtingsdatum Bereiken Doel", None))
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"Staafdiagram", None))
-        self.Leen.setText(QCoreApplication.translate("MainWindow", u"Leen", None))
-        self.Donatie.setText(QCoreApplication.translate("MainWindow", u"Donatie", None))
-        self.Verwachting_Grafiek.setText(QCoreApplication.translate("MainWindow", u"Verwachting", None))
+        self.Alles_Graph.setText(QCoreApplication.translate("MainWindow", u"Alles", None))
+        self.Leen_Graph.setText(QCoreApplication.translate("MainWindow", u"Leen", None))
+        self.Donatie_Graph.setText(QCoreApplication.translate("MainWindow", u"Donatie", None))
+        self.Verwachting_Graph.setText(QCoreApplication.translate("MainWindow", u"Verwachting", None))
         self.label_Doel.setText(QCoreApplication.translate("MainWindow", u"Doel:", None))
         self.Selectfile.setText(QCoreApplication.translate("MainWindow", u"Kies Bestand", None))
         self.Runanalysis.setText(QCoreApplication.translate("MainWindow", u"Run Analyse", None))

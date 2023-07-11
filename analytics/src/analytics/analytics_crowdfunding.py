@@ -1,13 +1,15 @@
 import sys
-from PySide6.QtWidgets import QApplication, QFileDialog
+from PySide6.QtWidgets import QApplication, QGraphicsScene, QFileDialog
 from PySide6.QtCore import Slot, QTranslator, QCoreApplication, QDate, Qt
 from PySide6 import QtWidgets, QtCore
+from PySide6.QtGui import QPainter, QBrush
 from analytics.user_interface import Ui_MainWindow
 import pyqtgraph as pg
 import pandas as pd
 import numpy as np
 from datetime import datetime, timedelta
-
+from PySide6.QtCharts import (QBarCategoryAxis, QBarSeries, QBarSet, QChart,
+                              QChartView, QLineSeries, QValueAxis)
 
 pg.setConfigOption("background", "w")
 pg.setConfigOption("foreground", "k")
@@ -40,12 +42,21 @@ class UserInterface(QtWidgets.QMainWindow):
         self.ui.Gemiddelde_Leen_value.setReadOnly(True)
         self.ui.Totaal_Value.setReadOnly(True)
         self.ui.Verwachting_Value.setReadOnly(True)
+        self.ui.Totaal_Leen_Value.setReadOnly(True)
+        self.ui.Totaal_Donatie_Value.setReadOnly(True)
+
         #Set initial text
         self.ui.Gemiddelde_Value.setText('\u20ac')
         self.ui.Gemiddelde_Leen_value.setText('\u20ac')
         self.ui.Gemiddelde_Donatie_Value.setText('\u20ac')
         self.ui.Totaal_Value.setText('\u20ac')
+        self.ui.Totaal_Leen_Value.setText('\u20ac')
+        self.ui.Totaal_Donatie_Value.setText('\u20ac')
         self.ui.Verwachting_Value.setText('dd-mm-yyyy')
+
+        #Graph
+        self.scene = QGraphicsScene()
+        self.ui.graphicsView.setScene(self.scene)
 
     @Slot()
     def clear(self):
@@ -62,6 +73,16 @@ class UserInterface(QtWidgets.QMainWindow):
         self.ui.Total.setChecked(False)
         self.ui.Verwachtingsdatum.setChecked(False)
         self.ui.Alles.setChecked(False)
+        self.ui.Total_Donatie.setChecked(False)
+        self.ui.Total_Leen.setChecked(False)
+        self.ui.Alles_Graph.setChecked(False)
+        self.ui.Leen_Graph.setChecked(False)
+        self.ui.Donatie_Graph.setChecked(False)
+        self.ui.Verwachting_Graph.setChecked(False)
+
+        #Clear graphs
+        self.ui.Totals.clear()
+        self.ui.age_groups.clear()
 
     @Slot()
     def selectfile(self):
@@ -112,12 +133,15 @@ class UserInterface(QtWidgets.QMainWindow):
                 dagen = (doel - totaal)/voordering
                 bereik_doel = df['Datum'].iloc[-1] + timedelta(days=dagen)
 
-                #setting computed values
+                #Setting computed values
                 self.ui.Gemiddelde_Value.setText(f'\u20ac {gemiddelde}')
                 self.ui.Gemiddelde_Donatie_Value.setText(f'\u20ac {gemiddelde_donatie}')
                 self.ui.Gemiddelde_Leen_value.setText(f'\u20ac {gemiddelde_leen}')
                 self.ui.Totaal_Value.setText(f'\u20ac {totaal}')
                 self.ui.Verwachting_Value.setText(f'\u20ac {bereik_doel.day}-{bereik_doel.month}-{bereik_doel.year}')
+                self.ui.Totaal_Donatie_Value.setText(f'{sum(donatie)}')
+                self.ui.Totaal_Leen_Value.setText(f'{sum(leen)}')
+
             else:
                 if self.ui.Gemiddelde.isChecked():
                     gemiddelde = round(np.mean(df['Bedrag']), 2)
@@ -150,6 +174,30 @@ class UserInterface(QtWidgets.QMainWindow):
                     dagen = (doel - totaal)/voordering
                     bereik_doel = df['Datum'].iloc[-1] + timedelta(days=dagen)
                     self.ui.Verwachting_Value.setText(f'\u20ac {bereik_doel.day}-{bereik_doel.month}-{bereik_doel.year}')
+                if self.ui.Totaal_Donatie.isChecked():
+                    donatie = []
+                    for i in range(len(df.iloc[:, 1])):
+                        if df['Leen_Donatie'].iloc[i] == "donatie":
+                            donatie.append(df['Bedrag'].iloc[i])
+                    self.ui.Totaal_Donatie_Value.setText(f'{sum(donatie)}')
+                if self.ui.Totaal_Leen.isChecked():
+                    leen = []
+                    for i in range(len(df.iloc[:, 1])):
+                        if df['Leen_Donatie'].iloc[i] == "leen":
+                            leen.append(df['Bedrag'].iloc[i])
+                    self.ui.Totaal_Leen_Value.setText(f'{sum(leen)}')
+                if self.ui.Alles_Graph.isChecked():
+                    dates = set(df['Datum']).iloc
+                    totals = np.zeros(len(dates))
+                    for i in range(0, len(dates)):
+                        Sum = 0
+                        for j in range(len(dates)):
+                            if dates[i] == df['Datum'].iloc[j]:
+                                Sum = Sum + df['Bedrag'].iloc[j]
+                        totals[i] = Sum + totals[i]
+                    self.bar = QBarSeries()
+                    
+
         return
 
 def main():
