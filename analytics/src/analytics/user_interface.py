@@ -15,23 +15,21 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QCheckBox, QFormLayout, QHBoxLayout,
-    QLabel, QLineEdit, QMainWindow, QMenuBar,
-    QPushButton, QSizePolicy, QSpinBox, QStatusBar,
-    QTabWidget, QVBoxLayout, QWidget)
-
-from pyqtgraph import PlotWidget
+from PySide6.QtWidgets import (QApplication, QCheckBox, QFormLayout, QGraphicsView,
+    QHBoxLayout, QLabel, QLineEdit, QMainWindow,
+    QMenuBar, QPushButton, QSizePolicy, QSpinBox,
+    QStatusBar, QTabWidget, QVBoxLayout, QWidget)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1135, 842)
+        MainWindow.resize(1582, 841)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.tabWidget = QTabWidget(self.centralwidget)
         self.tabWidget.setObjectName(u"tabWidget")
-        self.tabWidget.setGeometry(QRect(30, 10, 1111, 791))
+        self.tabWidget.setGeometry(QRect(60, 10, 1491, 791))
         self.tab = QWidget()
         self.tab.setObjectName(u"tab")
         self.formLayoutWidget = QWidget(self.tab)
@@ -170,25 +168,20 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_2.addWidget(self.label_2)
 
-        self.Alles_Graph = QCheckBox(self.verticalLayoutWidget)
-        self.Alles_Graph.setObjectName(u"Alles_Graph")
+        self.Totalen_Graph = QCheckBox(self.verticalLayoutWidget)
+        self.Totalen_Graph.setObjectName(u"Totalen_Graph")
 
-        self.verticalLayout_2.addWidget(self.Alles_Graph)
+        self.verticalLayout_2.addWidget(self.Totalen_Graph)
 
-        self.Leen_Graph = QCheckBox(self.verticalLayoutWidget)
-        self.Leen_Graph.setObjectName(u"Leen_Graph")
+        self.Age_groups_Graph = QCheckBox(self.verticalLayoutWidget)
+        self.Age_groups_Graph.setObjectName(u"Age_groups_Graph")
 
-        self.verticalLayout_2.addWidget(self.Leen_Graph)
+        self.verticalLayout_2.addWidget(self.Age_groups_Graph)
 
-        self.Donatie_Graph = QCheckBox(self.verticalLayoutWidget)
-        self.Donatie_Graph.setObjectName(u"Donatie_Graph")
+        self.Opslaan = QCheckBox(self.verticalLayoutWidget)
+        self.Opslaan.setObjectName(u"Opslaan")
 
-        self.verticalLayout_2.addWidget(self.Donatie_Graph)
-
-        self.Verwachting_Graph = QCheckBox(self.verticalLayoutWidget)
-        self.Verwachting_Graph.setObjectName(u"Verwachting_Graph")
-
-        self.verticalLayout_2.addWidget(self.Verwachting_Graph)
+        self.verticalLayout_2.addWidget(self.Opslaan)
 
 
         self.horizontalLayout.addLayout(self.verticalLayout_2)
@@ -218,17 +211,20 @@ class Ui_MainWindow(object):
         self.tabWidget.addTab(self.tab, "")
         self.tab_2 = QWidget()
         self.tab_2.setObjectName(u"tab_2")
-        self.Totals = PlotWidget(self.tab_2)
+        self.Totals = QGraphicsView(self.tab_2)
         self.Totals.setObjectName(u"Totals")
-        self.Totals.setGeometry(QRect(0, 10, 551, 521))
-        self.age_groups = PlotWidget(self.tab_2)
-        self.age_groups.setObjectName(u"age_groups")
-        self.age_groups.setGeometry(QRect(560, 10, 541, 521))
+        self.Totals.setGeometry(QRect(0, 10, 1481, 751))
         self.tabWidget.addTab(self.tab_2, "")
+        self.tab_3 = QWidget()
+        self.tab_3.setObjectName(u"tab_3")
+        self.age_groups = QGraphicsView(self.tab_3)
+        self.age_groups.setObjectName(u"age_groups")
+        self.age_groups.setGeometry(QRect(0, 0, 1481, 751))
+        self.tabWidget.addTab(self.tab_3, "")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 1135, 26))
+        self.menubar.setGeometry(QRect(0, 0, 1582, 26))
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QStatusBar(MainWindow)
         self.statusbar.setObjectName(u"statusbar")
@@ -236,7 +232,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(1)
+        self.tabWidget.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -244,32 +240,32 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
-        self.label_Gemiddelde.setText(QCoreApplication.translate("MainWindow", u"Gemiddelde:", None))
-        self.label_Gemiddelde_Leen.setText(QCoreApplication.translate("MainWindow", u"Gemiddelde Leen:", None))
-        self.label_Gemiddelde_Donatie.setText(QCoreApplication.translate("MainWindow", u"Gemiddelde Donatie:", None))
-        self.label_Totaal.setText(QCoreApplication.translate("MainWindow", u"Totaal:", None))
-        self.label_Verwachting.setText(QCoreApplication.translate("MainWindow", u"Verwachting:", None))
-        self.Totaal_Leen.setText(QCoreApplication.translate("MainWindow", u"Totaal Leen:", None))
-        self.Totaal_Donatie.setText(QCoreApplication.translate("MainWindow", u"Totaal Donatie:", None))
-        self.label.setText(QCoreApplication.translate("MainWindow", u"Geef de waarden op die berekent moeten worden", None))
-        self.Alles.setText(QCoreApplication.translate("MainWindow", u"Alles", None))
-        self.Gemiddelde.setText(QCoreApplication.translate("MainWindow", u"Gemiddelde", None))
-        self.GemiddeldeLeen.setText(QCoreApplication.translate("MainWindow", u"Gemiddelde: Leen", None))
-        self.GemiddeldeDonatie.setText(QCoreApplication.translate("MainWindow", u"Gemiddelde: Donatie", None))
-        self.Total.setText(QCoreApplication.translate("MainWindow", u"Totaal", None))
-        self.Total_Leen.setText(QCoreApplication.translate("MainWindow", u"Totaal Leen", None))
-        self.Total_Donatie.setText(QCoreApplication.translate("MainWindow", u"Totaal Donatie", None))
-        self.Verwachtingsdatum.setText(QCoreApplication.translate("MainWindow", u"Verwachtingsdatum Bereiken Doel", None))
-        self.label_2.setText(QCoreApplication.translate("MainWindow", u"Staafdiagram", None))
-        self.Alles_Graph.setText(QCoreApplication.translate("MainWindow", u"Alles", None))
-        self.Leen_Graph.setText(QCoreApplication.translate("MainWindow", u"Leen", None))
-        self.Donatie_Graph.setText(QCoreApplication.translate("MainWindow", u"Donatie", None))
-        self.Verwachting_Graph.setText(QCoreApplication.translate("MainWindow", u"Verwachting", None))
-        self.label_Doel.setText(QCoreApplication.translate("MainWindow", u"Doel:", None))
-        self.Selectfile.setText(QCoreApplication.translate("MainWindow", u"Kies Bestand", None))
-        self.Runanalysis.setText(QCoreApplication.translate("MainWindow", u"Run Analyse", None))
+        self.label_Gemiddelde.setText(QCoreApplication.translate("MainWindow", u"Average", None))
+        self.label_Gemiddelde_Leen.setText(QCoreApplication.translate("MainWindow", u"Average Leen:", None))
+        self.label_Gemiddelde_Donatie.setText(QCoreApplication.translate("MainWindow", u"Average Donatie:", None))
+        self.label_Totaal.setText(QCoreApplication.translate("MainWindow", u"Total:", None))
+        self.label_Verwachting.setText(QCoreApplication.translate("MainWindow", u"Expectation Date", None))
+        self.Totaal_Leen.setText(QCoreApplication.translate("MainWindow", u"Average Leen:", None))
+        self.Totaal_Donatie.setText(QCoreApplication.translate("MainWindow", u"Average Donatie:", None))
+        self.label.setText(QCoreApplication.translate("MainWindow", u"Select the values to compute", None))
+        self.Alles.setText(QCoreApplication.translate("MainWindow", u"All", None))
+        self.Gemiddelde.setText(QCoreApplication.translate("MainWindow", u"Average", None))
+        self.GemiddeldeLeen.setText(QCoreApplication.translate("MainWindow", u"Average: Leen", None))
+        self.GemiddeldeDonatie.setText(QCoreApplication.translate("MainWindow", u"Average: Donatie", None))
+        self.Total.setText(QCoreApplication.translate("MainWindow", u"Total", None))
+        self.Total_Leen.setText(QCoreApplication.translate("MainWindow", u"Total Leen", None))
+        self.Total_Donatie.setText(QCoreApplication.translate("MainWindow", u"Total Donatie", None))
+        self.Verwachtingsdatum.setText(QCoreApplication.translate("MainWindow", u"Expectation date reaching target", None))
+        self.label_2.setText(QCoreApplication.translate("MainWindow", u"Bar chart", None))
+        self.Totalen_Graph.setText(QCoreApplication.translate("MainWindow", u"Progress", None))
+        self.Age_groups_Graph.setText(QCoreApplication.translate("MainWindow", u"Age groups", None))
+        self.Opslaan.setText(QCoreApplication.translate("MainWindow", u"Save", None))
+        self.label_Doel.setText(QCoreApplication.translate("MainWindow", u"Target:", None))
+        self.Selectfile.setText(QCoreApplication.translate("MainWindow", u"Choose file", None))
+        self.Runanalysis.setText(QCoreApplication.translate("MainWindow", u"Run Analysis", None))
         self.Clear_button.setText(QCoreApplication.translate("MainWindow", u"Clear", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QCoreApplication.translate("MainWindow", u"Control", None))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), QCoreApplication.translate("MainWindow", u"Diagram", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), QCoreApplication.translate("MainWindow", u"Progress", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_3), QCoreApplication.translate("MainWindow", u"Age groups", None))
     # retranslateUi
 
